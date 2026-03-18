@@ -1,3 +1,30 @@
+:root {
+    --dark-amethyst: #20063b;
+    --dark-slate-grey: #395e66;
+    --honeydew: #ceeddb;
+    --amber-glow: #ff9f1c;
+    --magenta-bloom: #d1345b;
+    --clear-cloud: #fffbff;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: var(--dark-amethyst);
+    font-family: "Courier New", Courier, monospace;
+}
 body {
-    background-color: #ceeddb;
+    background-color: var(--honeydew);
+}
+/* _FLASH_MESSAGES_ */
+.flash-message {
+    width: 100%;
+    padding: 1rem 5%;
+}
+.flash-success {
+    background-color: var(--dark-slate-grey);
+    color: var(--clear-cloud);
+}
+.flash-info {
+    background-color: var(--amber-glow);
 }

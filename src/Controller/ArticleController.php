@@ -43,6 +43,8 @@ final class ArticleController extends AbstractController
             $em->persist($article);
             $em->flush();
 
+            $this->addFlash('success', "Your article was created with success");
+
             return $this->redirectToRoute('app_article');
         }
 
@@ -58,9 +60,13 @@ final class ArticleController extends AbstractController
 
         // if the user isn't the author or the article is published
         // the user can't access the edit form
-        if($user != $article->getUser() || $article->isPublished() == 1) {
+        if($user != $article->getUser()) {
+            $this->addFlash('info', "You cannot edit an article you don't own");
             return $this->redirectToRoute('app_article');
-            
+
+        } elseif($article->isPublished() == 1) {
+            $this->addFlash('info', "You cannot edit a published article");
+            return $this->redirectToRoute('app_article');
         }
 
         // the form has to be bellow the first if contition
@@ -70,6 +76,8 @@ final class ArticleController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid()) {
             $em->flush();
+
+            $this->addFlash('success', "The article was edited with success");
 
             return $this->redirectToRoute('app_article');
         }
@@ -85,10 +93,15 @@ final class ArticleController extends AbstractController
         $user = $this->getUser();
 
         if($user != $article->getUser()) {
+            $this->addFlash('info', "You cannot unpublish an article you don't own");
             return $this->redirectToRoute('app_article');
+
         } else {
             $article->setPublished(0);
             $em->flush();
+
+
+            $this->addFlash('success', "The article is not published anymore");
             return $this->redirectToRoute('app_article');
         }
     }
@@ -99,10 +112,14 @@ final class ArticleController extends AbstractController
         $user = $this->getUser();
 
         if($user != $article->getUser()) {
+            $this->addFlash('info', "You cannot unpublish an article you don't own");
             return $this->redirectToRoute('app_article');
+
         } else {
             $article->setPublished(1);
             $em->flush();
+
+            $this->addFlash('success', "The article is published");
             return $this->redirectToRoute('app_article');
         }
     }

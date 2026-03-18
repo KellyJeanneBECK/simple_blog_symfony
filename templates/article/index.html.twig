@@ -4,6 +4,7 @@
 
 {% block body %}
 <main>
+    {% include 'layouts/_flash_messages.html.twig' %}
     <h2>My articles</h2>
     <a href="{{ path('app_article_new') }}">New article</a>
     <table>
