@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}categories{% endblock %}
+
+{% block body %}
+<main>
+    {% include 'layouts/_flash_messages.html.twig' %}
+    <h2>Categories</h2>
+    <a href="{{ path('app_category_new') }}">New category</a>
+    {% if categoryList is not empty %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Action</th>
+            </tr>
+            {% for category in categoryList %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.id }}</td>
+                    <td><a href="{{ path('app_category_edit', {'id': category.id}) }}">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No category created</p>
+    {% endif %}
+</main>
+{% endblock %}

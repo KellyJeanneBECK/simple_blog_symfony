@@ -5,6 +5,9 @@
             <li><a href="{{ path('app_article') }}">My articles</a></li>
             <li><a href="{{ path('app_article_new') }}">New article</a></li>
         {% endif %}
+        {% if is_granted("ROLE_ADMIN") %}
+            <li><a href="{{ path('app_category_manager') }}">Category Manager</a></li>
+        {% endif %}
     </ul>
     <ul>
         {% if app.user %}

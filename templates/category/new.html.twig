@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New category{% endblock %}
+
+{% block body %}
+<main>
+    <h2>Create new category</h2>
+    {% include '/category/_form.html.twig' %}
+    <a href="{{ path('app_category_manager') }}"> Back to category manager</a>
+</main>
+{% endblock %}
