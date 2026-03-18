@@ -50,4 +50,60 @@ final class ArticleController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/{id}/edit', name:'app_article_edit', methods:['GET', 'POST'])]
+    public function editArticle(Request $request, EntityManagerInterface $em, Article $article):Response
+    {
+        $user = $this->getUser();
+
+        // if the user isn't the author or the article is published
+        // the user can't access the edit form
+        if($user != $article->getUser() || $article->isPublished() == 1) {
+            return $this->redirectToRoute('app_article');
+            
+        }
+
+        // the form has to be bellow the first if contition
+        // otherwise it won't update the 'published' property of Article entity
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+
+            return $this->redirectToRoute('app_article');
+        }
+        
+        return $this->render('article/edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/unpublish', name:'app_article_unpublish')]
+    public function unpublishArticle(EntityManagerInterface $em, Article $article):Response
+    {
+        $user = $this->getUser();
+
+        if($user != $article->getUser()) {
+            return $this->redirectToRoute('app_article');
+        } else {
+            $article->setPublished(0);
+            $em->flush();
+            return $this->redirectToRoute('app_article');
+        }
+    }
+
+    #[Route('/{id}/publish', name:'app_article_publish')]
+    public function publishArticle(EntityManagerInterface $em, Article $article):Response
+    {
+        $user = $this->getUser();
+
+        if($user != $article->getUser()) {
+            return $this->redirectToRoute('app_article');
+        } else {
+            $article->setPublished(1);
+            $em->flush();
+            return $this->redirectToRoute('app_article');
+        }
+    }
 }

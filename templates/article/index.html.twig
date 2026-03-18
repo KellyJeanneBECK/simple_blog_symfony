@@ -28,9 +28,10 @@
             </td>
             <td>
                 {% if article.published == 1 %}
-                    <a href="">Unpublish</a>
+                    <a href="{{ path('app_article_unpublish', {'id': article.id}) }}">Unpublish</a>
                 {% else %}
-                    <a href="">Publish</a>
+                    <a href="{{ path('app_article_publish', {'id': article.id}) }}">Publish</a>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">Edit</a>
                 {% endif %}
             </td>
         </tr>
