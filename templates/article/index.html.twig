@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My articles{% endblock %}
+
+{% block body %}
+<main>
+    <h2>My articles</h2>
+    <a href="{{ path('app_article_new') }}">New article</a>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created at</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for article in articleList %}
+        <tr>
+            <td>{{ article.title }}</td>
+            <td>{{ article.content|slice(0, 30) }}...</td>
+            <td>{{ article.createdAt|date }}</td>
+            <td>
+                {% if article.published == 1 %}
+                    <span>Published</span>
+                {% else %}
+                    <span>Not published</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if article.published == 1 %}
+                    <a href="">Unpublish</a>
+                {% else %}
+                    <a href="">Publish</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+            <p>You don't have any articles writtent yet</p>
+        {% endfor %}
+    </table>
+</main>
+{% endblock %}
