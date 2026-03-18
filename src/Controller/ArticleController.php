@@ -54,7 +54,7 @@ final class ArticleController extends AbstractController
     }
 
     #[Route('/{id}/edit', name:'app_article_edit', methods:['GET', 'POST'])]
-    public function editArticle(Request $request, EntityManagerInterface $em, ArticleRepository $article):Response
+    public function editArticle(Request $request, EntityManagerInterface $em, Article $article):Response
     {
         $user = $this->getUser();
 
@@ -88,7 +88,7 @@ final class ArticleController extends AbstractController
     }
 
     #[Route('/{id}/unpublish', name:'app_article_unpublish')]
-    public function unpublishArticle(EntityManagerInterface $em, ArticleRepository $article):Response
+    public function unpublishArticle(EntityManagerInterface $em, Article $article):Response
     {
         $user = $this->getUser();
 
@@ -107,7 +107,7 @@ final class ArticleController extends AbstractController
     }
 
     #[Route('/{id}/publish', name:'app_article_publish')]
-    public function publishArticle(EntityManagerInterface $em, ArticleRepository $article):Response
+    public function publishArticle(EntityManagerInterface $em, Article $article):Response
     {
         $user = $this->getUser();
 
