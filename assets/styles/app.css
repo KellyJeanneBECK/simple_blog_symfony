@@ -19,9 +19,28 @@ body {
 main {
     padding: 2rem 5vw;
 }
+h1,
 h2 {
     padding: 1rem 0;
 }
+ul {
+    list-style: none;
+}
+/* ___NAV_BAR___ */
+.nav-bar {
+    padding: 0.25rem 5vw;
+}
+.nav-bar ul {
+    padding: 0.25rem 0;
+}
+.nav-bar li {
+    margin: 0.25rem 0;
+}
+.auth-btn {
+    font-weight: 600;
+    opacity: 0.75;
+}
+/* _END_NAV_BAR */
 /* ___FLASH_MESSAGES___ */
 .flash-message {
     width: 100%;

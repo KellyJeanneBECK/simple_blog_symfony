@@ -1,4 +1,4 @@
-<nav>
+<nav class="nav-bar">
     <h1><a href="{{ path('app_home') }}">Simple Blog</a></h1>
     <ul>
         {% if app.user %}
@@ -11,10 +11,10 @@
     </ul>
     <ul>
         {% if app.user %}
-            <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            <li><a href="{{ path('app_logout') }}" class="auth-btn">Logout</a></li>
         {% else %}
-            <li><a href="{{ path('app_register') }}">Register</a></li>
-            <li><a href="{{ path('app_login') }}">Login</a></li>
+            <li><a href="{{ path('app_register') }}" class="auth-btn">Register</a></li>
+            <li><a href="{{ path('app_login') }}" class="auth-btn">Login</a></li>
         {% endif %}
     </ul>
 </nav>

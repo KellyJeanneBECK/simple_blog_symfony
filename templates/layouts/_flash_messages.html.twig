@@ -1,4 +1,4 @@
-{% for type, messages in app.flashes(['success', 'danger', 'info']) %}
+{% for type, messages in app.flashes(['success', 'info']) %}
     {% for message in messages %}
         <div class="flash-message flash-{{ type }}">
             {{ message }}
