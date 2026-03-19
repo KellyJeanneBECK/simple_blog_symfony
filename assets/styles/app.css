@@ -59,10 +59,24 @@ h2 {
     border-bottom: 2px solid var(--dark-amethyst);
 }
 .article-date {
-    opacity: 0.5;
+    opacity: 0.75;
     font-size: 0.85rem;
 }
-/* END_ARTICLES_ */
+.article-side,
+.article-content {
+    margin: 1rem 0;
+}
+.article-side .article-date {
+    margin: 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+    .article-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 2.5%;
+    }
+}
+/* _END_ARTICLES_ */
 /* ___BADGE___ */
 .badge {
     background-color: var(--magenta-bloom);

@@ -13,7 +13,7 @@
                 <p class="badge">{{ article.category.name }}</p>
                 <p class="article-date">{{ article.createdAt|date }}</p>
                 <p>{{ article.content|slice(0, 60) }}...</p>
-                <a href="">Read</a>
+                <a href="{{ path('app_read_article', {'id': article.id}) }}">Read</a>
             </article>
         {% endfor %}
     </section>

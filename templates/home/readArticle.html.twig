@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Read{% endblock %}
+
+{% block body %}
+<main>
+    <h2 class="article-title">{{ article.title }}</h2>
+    <article class="article-container">
+        <aside class="article-side">
+            <h3>{{ article.user.pseudo }}</h3>
+            <p class="article-date">{{ article.createdAt|date }}</p>
+            <p class="badge">{{ article.category.name }}</p>
+        </aside>
+        <p class="article-content">{{ article.content }}</p>
+    </article>
+</main>
+{% endblock %}

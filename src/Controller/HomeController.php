@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,14 @@ final class HomeController extends AbstractController
         $articleList = $articleRepo->findBy(['published' => 1], ['id' => 'DESC']);
         return $this->render('home/index.html.twig', [
             'articleList' => $articleList
+        ]);
+    }
+
+    #[Route('/read/{id}', name: 'app_read_article')]
+    public function readArticle(Article $article): Response
+    {
+        return $this->render('home/readArticle.html.twig', [
+            'article' => $article
         ]);
     }
 }
