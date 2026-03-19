@@ -16,7 +16,13 @@
 body {
     background-color: var(--honeydew);
 }
-/* _FLASH_MESSAGES_ */
+main {
+    padding: 2rem 5vw;
+}
+h2 {
+    padding: 1rem 0;
+}
+/* ___FLASH_MESSAGES___ */
 .flash-message {
     width: 100%;
     padding: 1rem 5%;
@@ -28,3 +34,42 @@ body {
 .flash-info {
     background-color: var(--amber-glow);
 }
+/* _END_FLASH_MESSAGES_ */
+/* ___ LIST_ARTICLES___ */
+.article-list-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5vw;
+}
+.home-article {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px var(--clear-cloud);
+    padding: 1rem 5vw;
+}
+.home-article h4 {
+    margin-top: 1rem;
+}
+.home-article p {
+    margin: 0.5rem 0;
+}
+/* _END_LIST_ARTICLES_ */
+/* ___ARTICLES___ */
+.article-title {
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--dark-amethyst);
+}
+.article-date {
+    opacity: 0.5;
+    font-size: 0.85rem;
+}
+/* END_ARTICLES_ */
+/* ___BADGE___ */
+.badge {
+    background-color: var(--magenta-bloom);
+    color: var(--clear-cloud);
+    width: fit-content;
+    height: fit-content;
+    padding: 0.25rem;
+    border-radius: 4px;
+}
+/* _END_BADGE_ */

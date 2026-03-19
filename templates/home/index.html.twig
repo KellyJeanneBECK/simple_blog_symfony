@@ -5,13 +5,13 @@
 {% block body %}
 <main>
     <h2>Home</h2>
-    <section>
+    <section class="article-list-container">
         {% for article in articleList %}
-            <article>
-                <h3>{{ article.title }}</h3>
+            <article class="home-article">
+                <h3 class="article-title">{{ article.title }}</h3>
                 <h4>{{ article.user.pseudo }}</h4>
-                <p>{{ article.category.name }}</p>
-                <p>{{ article.createdAt|date }}</p>
+                <p class="badge">{{ article.category.name }}</p>
+                <p class="article-date">{{ article.createdAt|date }}</p>
                 <p>{{ article.content|slice(0, 60) }}...</p>
                 <a href="">Read</a>
             </article>

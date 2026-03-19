@@ -20,7 +20,7 @@
         <tr>
             <td>{{ article.title }}</td>
             <td>{{ article.content|slice(0, 30) }}...</td>
-            <td>{{ article.category.name }}</td>
+            <td><span class="badge">{{ article.category.name }}</span></td>
             <td>{{ article.createdAt|date }}</td>
             <td>
                 {% if article.published == 1 %}
