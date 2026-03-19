@@ -87,39 +87,22 @@ final class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/unpublish', name:'app_article_unpublish')]
-    public function unpublishArticle(EntityManagerInterface $em, Article $article):Response
+    #[Route('/{id}/status', name:'app_article_status')]
+    public function toggleArticleStatus(EntityManagerInterface $em, Article $article):Response
     {
         $user = $this->getUser();
+        $action = $article->isPublished() == 0 ? "publish" : "unpublish";
+        $status = $article->isPublished() == 1 ? "published" : "unpublished";
 
         if($user != $article->getUser()) {
-            $this->addFlash('info', "You cannot unpublish an article you don't own");
+            $this->addFlash('info', "You cannot $action an article you don't own");
             return $this->redirectToRoute('app_article');
 
         } else {
-            $article->setPublished(0);
+            $article->setPublished(!$article->isPublished());
             $em->flush();
 
-
-            $this->addFlash('success', "The article is not published anymore");
-            return $this->redirectToRoute('app_article');
-        }
-    }
-
-    #[Route('/{id}/publish', name:'app_article_publish')]
-    public function publishArticle(EntityManagerInterface $em, Article $article):Response
-    {
-        $user = $this->getUser();
-
-        if($user != $article->getUser()) {
-            $this->addFlash('info', "You cannot unpublish an article you don't own");
-            return $this->redirectToRoute('app_article');
-
-        } else {
-            $article->setPublished(1);
-            $em->flush();
-
-            $this->addFlash('success', "The article is published");
+            $this->addFlash('success', "The article is $status");
             return $this->redirectToRoute('app_article');
         }
     }

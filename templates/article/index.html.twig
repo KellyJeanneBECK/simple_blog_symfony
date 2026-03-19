@@ -30,10 +30,14 @@
                 {% endif %}
             </td>
             <td>
-                {% if article.published == 1 %}
-                    <a href="{{ path('app_article_unpublish', {'id': article.id}) }}">Unpublish</a>
-                {% else %}
-                    <a href="{{ path('app_article_publish', {'id': article.id}) }}">Publish</a>
+                <a href="{{ path('app_article_status', {'id': article.id}) }}">
+                    {% if article.published == 1 %}
+                        <span>Unpublish</span>
+                    {% else %}
+                        <span>Publish</span>
+                    {% endif %}
+                </a>
+                {% if article.published == 0 %}
                     <a href="{{ path('app_article_edit', {'id': article.id}) }}">Edit</a>
                 {% endif %}
             </td>
