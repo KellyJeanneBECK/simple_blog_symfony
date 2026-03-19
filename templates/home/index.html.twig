@@ -10,9 +10,7 @@
             <article>
                 <h3>{{ article.title }}</h3>
                 <h4>{{ article.user.pseudo }}</h4>
-                {% if article.category is not empty %}
-                    <p>{{ article.category.name }}</p>
-                {% endif %}
+                <p>{{ article.category.name }}</p>
                 <p>{{ article.createdAt|date }}</p>
                 <p>{{ article.content|slice(0, 60) }}...</p>
                 <a href="">Read</a>

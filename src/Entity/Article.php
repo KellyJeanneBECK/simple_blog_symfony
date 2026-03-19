@@ -31,6 +31,7 @@ class Article
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
     public function getId(): ?int

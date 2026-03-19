@@ -20,11 +20,7 @@
         <tr>
             <td>{{ article.title }}</td>
             <td>{{ article.content|slice(0, 30) }}...</td>
-            {% if article.category is not empty %}
-                <td>{{ article.category.name }}</td>
-            {% else %}
-                <td>/</td>
-            {% endif %}
+            <td>{{ article.category.name }}</td>
             <td>{{ article.createdAt|date }}</td>
             <td>
                 {% if article.published == 1 %}
